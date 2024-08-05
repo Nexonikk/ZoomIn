@@ -2,6 +2,7 @@
 
 import MeetingTypeList from '@/components/MeetingTypeList';
 import { useGetCalls } from '@/hooks/useGetCalls';
+import { Call, CallRecording } from '@stream-io/video-client';
 
 const Home = () => {
   const { upcomingCalls } = useGetCalls();
@@ -28,7 +29,7 @@ const Home = () => {
             {calls && calls.length > 0
               ? 'Upcoming ' +
                 calls.map(
-                  (meeting: Calls | CallRecording) =>
+                  (meeting: Call | CallRecording) =>
                     (meeting as Call).state?.startsAt?.toLocaleString() ||
                     (meeting as CallRecording).start_time?.toLocaleString(),
                 )
